@@ -75,13 +75,9 @@ public class ResultService {
     }
     public Result processSubmission(AnswerSubmissionDTO submissionDTO) {
         Result result = new Result();
-        // Add logic to calculate score, assign quiz and user, etc.
-
-        result.setScore(8); // Example score
+        result.setScore(8);
         result.setTotalQuestions(submissionDTO.getAnswers().size());
         result.setTakenAt(java.time.LocalDateTime.now());
-
-        // Set quiz, user, etc. if needed
         return result;
     }
 

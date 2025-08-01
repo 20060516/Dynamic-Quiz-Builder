@@ -24,8 +24,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration config)
-            throws Exception {
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
     }
 
@@ -34,23 +33,22 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**", "/api/quiz/**", "/api/questions/**","/api/result/**").permitAll() // ✅ Fixed quote
+                        .requestMatchers("/api/auth/**", "/api/quiz/**", "/api/questions/**", "/api/result/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .userDetailsService(userDetailsService)
-                .formLogin(login -> login.disable()); // Disable form login for JWT/token-based
+                .formLogin(login -> login.disable()); // No form login (e.g. for REST API)
 
         return http.build();
     }
 
-    // Optional: Allow all origins for CORS (frontend testing)
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("*") // Replace "*" with specific domain in production
+                        .allowedOrigins("*")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
             }
         };
