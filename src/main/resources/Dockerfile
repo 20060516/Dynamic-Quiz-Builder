@@ -3,6 +3,6 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 FROM openjdk:17.0.1-jdk-slim
-COPY --from=build /target/*.jar springbootfirst.jar
+COPY --from=build /target/*.jar QuizBuilder.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","springbootfirst.jar"]
+ENTRYPOINT ["java","-jar","QuizBuilder.jar"]
