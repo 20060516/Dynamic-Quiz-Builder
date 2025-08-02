@@ -1,0 +1,31 @@
+/* src/components/components.css */
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.navbar-brand {
+  font-size: 1.6rem;
+}
+
+.navbar .nav-link {
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.navbar .nav-link:hover {
+  color: #ffd700 !important;
+}
+
+/* Optional: Make logout button hover match theme */
+.navbar .btn-outline-light:hover {
+  background-color: #ffd700;
+  color: #000;
+  border-color: #ffd700;
+}
+.card {
+  border-radius: 8px;
+}
+.card-title {
+  font-weight: bold;
+}
